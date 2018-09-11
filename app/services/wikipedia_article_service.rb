@@ -1,3 +1,5 @@
+require 'addressable/template'
+
 class WikipediaArticleService
   attr_reader :abbreviation, :search_word
 
@@ -18,7 +20,8 @@ class WikipediaArticleService
   end
 
   def get_json(url)
-    all = JSON.parse(conn.get(url).body, symbolize_names: true)
+    entire_uri = Addressable::URI.parse(url).normalize
+    all = JSON.parse(conn.get(entire_uri).body, symbolize_names: true)
     page_number = all[:query][:pages].keys.first
     all[:query][:pages][page_number][:extract]
   end
