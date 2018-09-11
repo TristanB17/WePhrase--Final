@@ -18,6 +18,7 @@ class YandexTranslatorService
   end
 
   def get_json(url)
-    JSON.parse(conn.get(url).body, symbolize_names: true)[:text]
+    entire_uri = Addressable::URI.parse(url).normalize
+    JSON.parse(conn.get(entire_uri).body, symbolize_names: true)[:text]
   end
 end
