@@ -3,13 +3,13 @@ class WikipediaArticlePresenter
 
   def initialize(abbreviation, search_text)
     @search_word = YandexTranslatorService.new(abbreviation, search_text)
-    @service = WikipediaArticleService.new(abbreviation, @search_word.translate.first)
+    @service = WikipediaArticleService.new(abbreviation, @search_word.translate_to_target.first)
   end
 
   def article
     unparsed = @service.retrieve_article
     if unparsed == "" || unparsed == nil
-      return "Sorry, couldn't find anything for that query, maybe try formatting it differently (capitalized, hyphenated, etc)?"
+      return nil
     elsif unparsed.include?("。")
       get_parsed = WikipediaArticleParser.new(unparsed.split("=="))
       get_parsed.mandarin_parse_now

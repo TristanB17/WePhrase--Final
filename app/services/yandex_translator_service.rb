@@ -6,7 +6,7 @@ class YandexTranslatorService
     @text = text
   end
 
-  def translate
+  def translate_to_target
     get_json("/api/v1.5/tr.json/translate?key=#{ENV['TRANSLATOR_API_KEY']}&text=#{text}&lang=en-#{abbreviation}")
   end
 

@@ -47,8 +47,8 @@ describe 'a User' do
         click_button "Search"
       end
 
-      expect(current_path).to eq("/languages/#{lang_2.id}/search")
-      expect(page).to have_content("Sorry, couldn't find anything for that query, maybe try formatting it differently (capitalized, hyphenated, etc)?")
+      expect(current_path).to eq("/languages/#{lang_2.id}/new")
+      expect(page).to have_content("We're sorry! We couldn't find any results for that query;")
     end
     it 'translates a mandarin phrase on heroku via encoding' do
       user = create(:user)
