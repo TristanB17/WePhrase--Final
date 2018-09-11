@@ -6,7 +6,8 @@ class User < ApplicationRecord
   has_many :languages, through: :user_languages
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
+    # where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
+    create! do |user|
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.first_name
