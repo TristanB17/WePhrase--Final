@@ -1,0 +1,5 @@
+Search for phrases in an area of interest:
+<%= form_tag("/languages/#{@language.id}/search", :method => "get", id: "phrase-search-form") do %>
+    <%= text_field_tag :phrase_search, params[:search_word], placeholder: "Title/Topic" %>
+    <%= submit_tag "Search", :name => "Search" %>
+<% end %>

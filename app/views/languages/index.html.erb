@@ -1,0 +1,6 @@
+<% @language.phrases.each do |phrase| %>
+  <%= phrase.body %><br>
+  <% phrase.translations.each do |translation| %>
+    <%= translation.output %><br><br>
+  <% end %>
+<% end %>

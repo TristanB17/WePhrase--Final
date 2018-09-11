@@ -1,0 +1,16 @@
+<div class="text-box">
+    <% if @article.class == String %>
+      <%= @article %><br>
+      <%= link_to "Try, try again", "/languages/#{@language.id}/new" %>
+    <% else %>
+    <div class="translation-box">
+      <% @article.each do |section| %>
+        <% section.body.each do |sentence| %>
+          Section: <%= section.subheader.delete("= ") %><br>
+          <%= sentence %><br><br>
+
+        <% end %><br><br>
+      <% end %>
+    <% end %>
+  </div>
+</div>

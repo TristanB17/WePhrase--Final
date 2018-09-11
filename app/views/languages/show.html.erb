@@ -1,0 +1,8 @@
+<%= link_to 'get some phrases', "/languages/#{@language.id}/new" %>
+
+<% @language.phrases.each do |phrase| %>
+  <%= phrase.body %>
+  <% phrase.translations.each do |translation| %>
+    <%= translation.output %><br><br>
+  <% end %>
+<% end %>
