@@ -11,12 +11,12 @@ class WikipediaArticleParser
       if index == 0
         unparsed_hash = {}
         unparsed_hash[:header] = "overview"
-        unparsed_hash[:body] = slab.delete("\n").split(". ")
+        unparsed_hash[:body] = slab.delete("\n").delete('"').split(". ")
         semi_parsed << unparsed_hash
       elsif slab.length < 40 && unparsed_text[index + 1] != nil && unparsed_text[index + 1].length > 70
         unparsed_hash = {}
         unparsed_hash[:header] = slab
-        unparsed_hash[:body] = unparsed_text[index + 1].delete("\n").split(". ")
+        unparsed_hash[:body] = unparsed_text[index + 1].delete("\n").delete('"').split(". ")
         semi_parsed << unparsed_hash
       else
         semi_parsed << nil

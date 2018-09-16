@@ -1,4 +1,4 @@
-<%= link_to 'get some phrases', "/languages/#{@language.id}/new" %>
+<%= link_to 'get some phrases', "/languages/#{@language.id}/search/new" %>
 
 <% @language.phrases.each do |phrase| %>
   <%= phrase.body %>

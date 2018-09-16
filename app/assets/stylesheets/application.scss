@@ -37,3 +37,11 @@
 .translation-box {
   font-size: 35px;
 }
+
+div.hidden {
+  display: none;
+}
+
+.upside-down {
+  transform: rotate(180deg);
+}

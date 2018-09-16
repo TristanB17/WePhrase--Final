@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2018_09_10_195815) do
 
   create_table "phrases", force: :cascade do |t|
     t.text "body"
+    t.text "computer_translation"
     t.bigint "language_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -32,7 +33,6 @@ ActiveRecord::Schema.define(version: 2018_09_10_195815) do
     t.text "output"
     t.bigint "user_id"
     t.bigint "phrase_id"
-    t.text "computer_translation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["phrase_id"], name: "index_translations_on_phrase_id"

@@ -1,16 +1,29 @@
-<div class="text-box">
-    <% if @article.class == String %>
-      <%= @article %><br>
-      <%= link_to "Try, try again", "/languages/#{@language.id}/new" %>
-    <% else %>
-    <div class="translation-box">
-      <% @article.each do |section| %>
-        <% section.body.each do |sentence| %>
-          Section: <%= section.subheader.delete("= ") %><br>
-          <%= sentence %><br><br>
+  <script>
+    let javaArticle = JSON.parse('<%= @article.to_json %>'.replace(/&quot;/g, "\""))
 
-        <% end %><br><br>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+    const allTheCards = javaArticle.map(lang => {
+      return (
+        `<article class="translate-card">
+          <section>Section:
+            ${lang.subheader}
+          </section>
+          <p>${lang.sentence}</p>
+          <form>
+            <input class="translate" type="text" placeholder="input words to translation" />
+            <button class='button'>Submit Translation</button>
+          </form>
+        </article>
+        `
+      )
+    })
+    $('.middle-container').html(allTheCards);
+
+    $('.translate').on('keyup', function(e) {
+      console.log(e);
+    })
+    $('.button').on('click', function (e) {
+      e.preventDefault();
+      console.log('did it!')
+      $('.button').closest('p').hide()
+    });
+  </script>

@@ -10,6 +10,10 @@ class YandexTranslatorService
     get_json("/api/v1.5/tr.json/translate?key=#{ENV['TRANSLATOR_API_KEY']}&text=#{text}&lang=en-#{abbreviation}")
   end
 
+  def translate_from_target
+    get_json("/api/v1.5/tr.json/translate?key=#{ENV['TRANSLATOR_API_KEY']}&text=#{text}&lang=#{abbreviation}-en")
+  end
+
   private
   def conn
     Faraday.new("https://translate.yandex.net") do |faraday|

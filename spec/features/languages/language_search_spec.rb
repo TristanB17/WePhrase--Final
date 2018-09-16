@@ -11,7 +11,7 @@ describe 'a User' do
       expect(page).to have_link('get some phrases')
       click_link 'get some phrases'
 
-      expect(current_path).to eq("/languages/#{lang_2.id}/new")
+      expect(current_path).to eq("/languages/#{lang_2.id}/search/new")
       expect(page).to have_content("Search for phrases in an area of interest:")
       expect(page).to have_field(:phrase_search)
       expect(page).to have_button("Search")
@@ -25,7 +25,7 @@ describe 'a User' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       search_word = 'Spider-Man'
 
-      visit "/languages/#{lang_2.id}/new"
+      visit "/languages/#{lang_2.id}/search/new"
       within find('#phrase-search-form') do
         fill_in :phrase_search, with: search_word
         click_button "Search"
@@ -41,13 +41,13 @@ describe 'a User' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       search_word = 'spiderman'
 
-      visit "/languages/#{lang_2.id}/new"
+      visit "/languages/#{lang_2.id}/search/new"
       within find('#phrase-search-form') do
         fill_in :phrase_search, with: search_word
         click_button "Search"
       end
 
-      expect(current_path).to eq("/languages/#{lang_2.id}/new")
+      expect(current_path).to eq("/languages/#{lang_2.id}/search/new")
       expect(page).to have_content("We're sorry! We couldn't find any results for that query;")
     end
     it 'translates a mandarin phrase on heroku via encoding' do
@@ -57,7 +57,7 @@ describe 'a User' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       search_word = 'Big Bang'
 
-      visit "/languages/#{lang_1.id}/new"
+      visit "/languages/#{lang_1.id}/search/new"
       within find('#phrase-search-form') do
         fill_in :phrase_search, with: search_word
         click_button "Search"
@@ -68,3 +68,9 @@ describe 'a User' do
     end
   end
 end
+
+# / <!-- <%= submit_tag 'Submit Translation', :class => "button" %> -->
+# // <%= form_tag "/languages/#{@language.id}/search", method: :post do %>
+# //   <%= hidden_field_tag :article_sentence, sentence %>
+# //   <%= text_area_tag :user_translation %><br>
+# //   var tempId = #{temp_id};

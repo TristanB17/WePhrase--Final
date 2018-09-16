@@ -4,11 +4,11 @@ UserLanguage.destroy_all
 Translation.destroy_all
 Phrase.destroy_all
 
-user_1 = User.create!(provider: 'google', uid: '47', name: "Billy Mays", oauth_token: '475', oauth_expires_at: '0')
-user_2 = User.create!(provider: 'google', uid: '48', name: "Anthony Sullivan", oauth_token: '476', oauth_expires_at: '0')
-user_3 = User.create!(provider: 'google', uid: '49', name: "Phil Swift", oauth_token: '477', oauth_expires_at: '0')
-user_4 = User.create!(provider: 'google', uid: '50', name: "Vince with Shamwow", oauth_token: '478', oauth_expires_at: '0')
-user_5 = User.create!(provider: 'google', uid: '51', name: "Swoos", oauth_token: '479', oauth_expires_at: '0')
+user_1 = User.create!(provider: 'google', uid: '47', name: "Billy Mays", oauth_token: '475', oauth_expires_at: '0', api_key: 1)
+user_2 = User.create!(provider: 'google', uid: '48', name: "Anthony Sullivan", oauth_token: '476', oauth_expires_at: '0', api_key: 2)
+user_3 = User.create!(provider: 'google', uid: '49', name: "Phil Swift", oauth_token: '477', oauth_expires_at: '0', api_key: 3)
+user_4 = User.create!(provider: 'google', uid: '50', name: "Vince with Shamwow", oauth_token: '478', oauth_expires_at: '0', api_key: 4)
+user_5 = User.create!(provider: 'google', uid: '51', name: "Swoos", oauth_token: '479', oauth_expires_at: '0', api_key: 5)
 language_1 = Language.create!(name: "Mandarin", abbreviation: 'zh')
 language_2 = Language.create!(name: "German", abbreviation: 'de')
 language_3 = Language.create!(name: "Spanish", abbreviation: 'es')
