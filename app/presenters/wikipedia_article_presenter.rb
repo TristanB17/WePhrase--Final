@@ -1,7 +1,8 @@
 class WikipediaArticlePresenter
-  attr_reader :service, :search_word
+  attr_reader :service, :search_word, :abbreviation
 
   def initialize(abbreviation, search_text)
+    @abbreviation = abbreviation
     @search_word = YandexTranslatorService.new(abbreviation, search_text)
     @service = WikipediaArticleService.new(abbreviation, @search_word.translate_to_target.first)
   end
@@ -14,7 +15,7 @@ class WikipediaArticlePresenter
       get_parsed = WikipediaArticleParser.new(unparsed.split("=="))
       get_parsed.mandarin_parse_now
     else
-      get_parsed = WikipediaArticleParser.new(unparsed.split("=="))
+      get_parsed = WikipediaArticleParser.new(unparsed.split("=="), abbreviation)
       get_parsed.parse_now
     end
   end

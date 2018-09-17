@@ -32,7 +32,9 @@ describe 'a User' do
       end
 
       expect(current_path).to eq("/languages/#{lang_2.id}/search")
-      expect(page).to have_content('Die Spinne')
+      within(first '.article') do
+        expect(page).to have_text('Die Spinne')
+      end
     end
     it 'translates a word if no matching page found in english' do
       user = create(:user)
@@ -64,7 +66,7 @@ describe 'a User' do
       end
 
       expect(current_path).to eq("/languages/#{lang_1.id}/search")
-      expect(page).to have_content('大爆炸')
+      expect(page).to have_text('大爆炸')
     end
   end
 end

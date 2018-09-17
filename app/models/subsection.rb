@@ -1,20 +1,21 @@
-class Subsection
-  attr_reader :subheader, :body
+require 'pragmatic_segmenter'
 
-  def initialize(article_info)
+class Subsection
+  attr_reader :subheader, :body, :target_language
+
+  def initialize(article_info, target_language = nil)
     @subheader = article_info[:header]
-    @body = split_sentences(article_info[:body])
+    @target_language = target_language
+    @body = test_parser(article_info[:body])
   end
 
-  def split_sentences(sentences)
-    sentences.map.with_index do |sentence, index|
-      if sentences[index + 1] != nil && sentences[index + 2] != nil && sentences[index + 1].length == 1
-        concatted = sentence << sentences[index + 1] << " " << sentences[index + 2]
-        sentences.delete_at(index + 1)
-        sentences.delete_at(index + 1)
-        concatted
-      else
-        sentence
+  def test_parser(sentences)
+    if sentences.first.chars[0].match?(/\p{Han}/) || sentences.first.chars.sample.match?(/\p{Han}/)
+      return sentences
+    else sentences.include?("。") == false
+      ps = PragmaticSegmenter::Segmenter.new(text: sentences, language: target_language)
+      ps.segment.map do |segment|
+        segment.delete('"').gsub("&", ",")
       end
     end
   end

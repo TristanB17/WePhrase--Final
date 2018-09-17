@@ -1,0 +1,10 @@
+Yandex Translator translates this sentence as:<br>
+<%= JSON.parse(@phrase.computer_translation).first %><br><br>
+<% if @phrase.translations.empty? %>
+  It seems you submitted the first translation for this phrase! Congratulations!
+<% else %>
+  <% @phrase.translations.each do |translation| %>
+    Translator: <%= translation.user.name %><br>
+    <%= translation.output %><br><br>
+  <% end %>
+<% end %>

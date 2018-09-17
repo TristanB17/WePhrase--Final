@@ -30,6 +30,7 @@ gem 'faraday'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 gem 'addressable'
+gem 'pragmatic_segmenter'
 # client secret - nGOdr6I_h7GQP4igjabHK6SF
 # client ID - 883150170868-p6ssa09bp9u07ecrskffpd6uqc266th0.apps.googleusercontent.com
 # AIzaSyAj56SLNfVOPfJ1aenLFr0LUiW9a8xtMgw

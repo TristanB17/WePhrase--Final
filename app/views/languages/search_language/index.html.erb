@@ -1,5 +1,8 @@
   <script>
     let javaArticle = JSON.parse('<%= @article.to_json %>'.replace(/&quot;/g, "\""))
+    let languageId = '<%= @language.id %>'
+    let baseUrl = '<%= ENV['BASE_URL'] %>'
+    let keyWord = '<%= @keyword %>'
 
     const allTheCards = javaArticle.map(lang => {
       return (
@@ -7,10 +10,14 @@
           <section>Section:
             ${lang.subheader}
           </section>
-          <p>${lang.sentence}</p>
+          <p class="to-translate">${lang.sentence}</p>
           <form>
-            <input class="translate" type="text" placeholder="input words to translation" />
+            <input type="hidden" name="keyword" id="keyword" value="${keyWord}">
+            <input type="hidden" name="subheader" id="subheader" value="${lang.subheader}">
+            <input type="hidden" name="sentence" id="sentence" value="${lang.sentence}">
+            <input class="translate" name="user_translation" type="text" placeholder="input your translation" value="" />
             <button class='button'>Submit Translation</button>
+            <div class='successful-translation'></div>
           </form>
         </article>
         `
@@ -18,12 +25,18 @@
     })
     $('.middle-container').html(allTheCards);
 
-    $('.translate').on('keyup', function(e) {
-      console.log(e);
-    })
     $('.button').on('click', function (e) {
+      debugger;
       e.preventDefault();
-      console.log('did it!')
-      $('.button').closest('p').hide()
+      let uniqueIdentfier = ''
+      $.ajax({
+        type: "POST",
+        url: baseUrl + "/languages/" + languageId + "/search",
+        data: $(this).closest('form').serialize(),
+        success: function(response) {
+          jQuery('.successful-translation').html(response)
+        }
+      });
+      $(this).prop('disabled', true);
     });
   </script>
