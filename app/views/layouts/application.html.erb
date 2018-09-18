@@ -21,10 +21,10 @@
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <%= form_tag :languages, method: :get, class: "form-inline" do %>
+          <%= form_tag '/languages', method: :get, class: "form-inline" do %>
             <div class="form-group search-field">
               <%= select_tag :language, options_for_select(language_select) %>
-              <%= submit_tag "Select a Language", method: :get, class: "btn btn-primary" %>
+              <%= submit_tag "Recent Translations", method: :get, class: "btn btn-primary" %>
             </div>
           <% end %>
         </ul>
@@ -34,6 +34,9 @@
           </h4>
           <h4 class="navbar-text">
             <%= link_to "Sign out", signout_path, id: "sign_out" %>
+          </h4>
+          <h4 class='navbar-text'>
+            <%= button_to "Select New Language", new_language_path, method: :get %>
           </h4>
         </div>
       </div>
@@ -47,9 +50,10 @@
       <div class="middle-container">
         <% if flash[:notice] %>
           <%= render partial: '/layouts/flash' %>
-        <% end %>
+          <% end %>
         <%= yield %>
       </div>
     </div>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
   </body>
 </html>

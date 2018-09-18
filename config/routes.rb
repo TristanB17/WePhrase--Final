@@ -6,13 +6,18 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
   get '/dashboard', to: 'dashboard#show', as: :dashboard
 
-  resources :languages, only: [:index, :show]
+  resources :languages, only: [:index, :show, :new, :create]
   namespace :languages do
-    get '/:id/new', to: 'search_language#new'
+    get '/:id/search/new', to: 'search_language#new'
     get '/:id/search', to: 'search_language#index'
+    post '/:id/search', to: 'search_language#create'
   end
 
+  resources :translations do
+    member do
+      put "like" => "translations#upvote"
+    end
+  end
   resources :sessions, only: [:create, :destroy]
   resources :home, only: [:show]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

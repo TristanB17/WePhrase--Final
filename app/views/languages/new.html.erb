@@ -1,0 +1,24 @@
+<%= form_tag :languages, method: :post do %>
+  Enter a Language Code:
+  <%= text_field_tag :language_abbreviation, 'Enter a Language Code' %>
+  <%= submit_tag "Submit Language!" %>
+<% end %>
+
+(If you don't know the language code for your target language, see the guide below for a list of available languages)
+<br><br>
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>Code Abbreviation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Language.valid_languages.each_pair do |key, value| %>
+    <tr>
+      <td><%= key %></td>
+      <td><%= value %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -12,6 +12,10 @@ class WikipediaArticleService
     get_json("/w/api.php?action=query&prop=extracts&format=json&exsectionformat=wiki&explaintext=true&titles=#{search_word}")
   end
 
+  def test_parser
+    get_json("/w/api.php?action=query&prop=extracts&format=json&exsectionformat=wiki&explaintext=true&titles=#{search_word}")
+  end
+
   private
   def conn
     Faraday.new("https://#{abbreviation}.wikipedia.org") do |faraday|

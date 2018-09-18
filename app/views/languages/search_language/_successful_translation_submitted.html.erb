@@ -1,0 +1,17 @@
+Yandex Translator translates this sentence as:<br>
+<%= JSON.parse(@phrase.computer_translation).first %><br><br>
+<% if @phrase.translations.where.not(user_id: current_user.id).empty? %>
+  You submitted the first translation for this phrase! Congratulations!
+<% else %>
+  Other user translations: <br>
+  <% other_translations = @phrase.translations.others(current_user.id).sort_by {|t| t.votes_for.size } %>
+  <% other_translations.each do |translation| %>
+    <%= translation.output %><br>
+    Translation submitted by: <%= translation.user.name %><br>
+    <%= link_to like_translation_path(translation), method: :put do %>
+      Upvote Translation
+      <%= translation.get_upvotes.size %>
+    <% end %>
+  <% end %>
+<% end %>
+<br><br>
