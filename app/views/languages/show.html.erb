@@ -1,8 +1,12 @@
 <%= link_to 'get some phrases', "/languages/#{@language.id}/search/new" %>
-
-<% @language.phrases.each do |phrase| %>
-  <%= phrase.body %>
-  <% phrase.translations.each do |translation| %>
-    <%= translation.output %><br><br>
+<%= @language.name %><br><br>
+<% if @language.phrases.empty? == false %>
+  <% @language.phrases.each do |phrase| %>
+    <%= phrase.body %>
+    <% phrase.translations.each do |translation| %>
+      <%= translation.output %><br><br>
+    <% end %>
   <% end %>
+<% else %>
+  No translations for this language yet!
 <% end %>

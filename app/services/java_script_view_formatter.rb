@@ -10,7 +10,7 @@ class JavaScriptViewFormatter
     article.each do |section|
       section.body.each do |sentence|
         sentence_hash = {}
-        sentence_hash[:subheader] = section.subheader.strip.delete("= ")
+        sentence_hash[:subheader] = section.subheader.delete("=")
         sentence_hash[:sentence] = sentence
         sentence_array << sentence_hash
       end

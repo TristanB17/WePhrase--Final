@@ -1,1 +1,33 @@
-<%= current_user.name %>
+<h1>Your Translations:</h1><br><br>
+<% if current_user.translations != nil %>
+  <% cool = current_user.translations.sort_by { |t| t.created_at } %>
+  <% cool.reverse.each do |translation| %>
+    Language: <%= translation.phrase.language.name %><br>
+    Original Text:<br>
+    <%= translation.phrase.body %><br>
+    Your Translation:<br>
+    <%= translation.output %><br>
+    Approvals: <%= translation.votes_for.size %><br><br>
+    Other translations for this phrase:<br>
+    Yandex <br>
+    <%= translation.phrase.computer_translation.delete('[').delete(']').delete('"') %><br><br>
+    Other user translations:
+    <% if translation.phrase.others?(current_user.id) == false %>
+      <% other_translations = translation.phrase.others(current_user.id).sort_by {|t| t.votes_for.size } %>
+      <% other_translations.each do |translation| %>
+        <%= translation.output %><br>
+        Translation submitted by: <%= translation.user.name %><br>
+        <%= link_to like_translation_path({id: translation.id, url: request.env["REQUEST_PATH"]}), method: :put do %>
+          Upvote Translation
+          <%= translation.get_upvotes.size %>
+        <% end %>
+        <br><br>
+      <% end %>
+    <% else %>
+      No other user translations currently exist for this text
+    <% end %>
+    <br><br><br>
+  <% end %>
+  <% else %>
+  You don't have any translations yet!
+<% end %>

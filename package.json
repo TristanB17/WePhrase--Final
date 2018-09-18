@@ -1,5 +1,8 @@
 {
   "name": "WePhrase",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "google-translate-api": "^2.3.0",
+    "jquery-path": "^1.0.0"
+  }
 }

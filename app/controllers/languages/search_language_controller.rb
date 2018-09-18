@@ -19,11 +19,8 @@ class Languages::SearchLanguageController < ApplicationController
   end
 
   def create
-    @phrase = @language.phrases.find_or_create_by(body: params[:sentence], subject: params[:keyword], focus: params[:subheader], computer_translation: YandexTranslatorService.new(@language.abbreviation, params[:sentence]).translate_from_target)
-    @translation = @phrase.translations.create(output: params[:user_translation], user_id: current_user.id)
-    if @phrase != nil && @translation != nil
-      render partial: 'successful_translation_submitted'
-    end
+    phrase = Phrase.find_by(body: params[:sentence])
+    @article = check_phrase(phrase)
   end
 
   private
@@ -31,3 +28,12 @@ class Languages::SearchLanguageController < ApplicationController
     @language = Language.find(params[:id])
   end
 end
+
+# def create
+#   if Phrase.find_by(body: params[:sentence]) == nil
+#   @phrase = @language.phrases.find_or_create_by(body: params[:sentence], subject: params[:keyword], focus: params[:subheader], computer_translation: YandexTranslatorService.new(@language.abbreviation, params[:sentence]).translate_from_target)
+#   @translation = @phrase.translations.create(output: params[:user_translation], user_id: current_user.id)
+#   if @phrase != nil && @translation != nil
+#     render partial: 'successful_translation_submitted'
+#   end
+# end
