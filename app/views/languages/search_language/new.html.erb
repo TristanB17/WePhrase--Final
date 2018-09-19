@@ -3,12 +3,3 @@ Search for phrases in an area of interest:
     <%= text_field_tag :phrase_search, params[:search_word], placeholder: "Title/Topic" %>
     <%= submit_tag "Search", :name => "Search" %>
 <% end %>
-<h1 class='important-header'>Yung Boi</h1>
-<button class='yung-button' name="button">Press dis</button>
-<script type="text/javascript">
-  $('.important-header').text('I LUH YOU')
-  $('.yung-button').on('click', function () {
-    $('h1').css("textDecoration", "line-through");
-    $('h1').toggleClass('upside-down');
-  });
-</script>
