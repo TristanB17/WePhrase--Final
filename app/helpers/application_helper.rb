@@ -1,9 +1,8 @@
 module ApplicationHelper
   def language_select
-    [
-      ["Mandarin", 1],
-      ["German", 2],
-      ["Spanish", 3]
-    ]
+    Language.all.reduce([]) do |sum, lang|
+      sum << [lang.name, lang.id]
+      sum
+    end
   end
 end

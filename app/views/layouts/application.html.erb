@@ -21,7 +21,7 @@
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <%= form_tag '/languages', method: :get, class: "form-inline" do %>
+          <%= form_tag :languages, method: :get, class: "form-inline" do %>
             <div class="form-group search-field">
               <%= select_tag :language, options_for_select(language_select) %>
               <%= submit_tag "Recent Translations", method: :get, class: "btn btn-primary" %>

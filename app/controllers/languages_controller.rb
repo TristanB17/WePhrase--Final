@@ -4,7 +4,7 @@ class LanguagesController < ApplicationController
   end
 
   def index
-    @languages = Language.all
+    @language = Language.find(params[:language])
   end
 
   def new

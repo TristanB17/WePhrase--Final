@@ -1,4 +1,5 @@
-<% @languages.phrases.each do |phrase| %>
+Most Recent Translations for <%= @language.name %>
+<% @language.phrases.each do |phrase| %>
   <%= phrase.body %><br>
   <% phrase.translations.each do |translation| %>
     <%= translation.output %><br><br>

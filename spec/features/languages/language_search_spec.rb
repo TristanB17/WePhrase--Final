@@ -70,9 +70,3 @@ describe 'a User' do
     end
   end
 end
-
-# / <!-- <%= submit_tag 'Submit Translation', :class => "button" %> -->
-# // <%= form_tag "/languages/#{@language.id}/search", method: :post do %>
-# //   <%= hidden_field_tag :article_sentence, sentence %>
-# //   <%= text_area_tag :user_translation %><br>
-# //   var tempId = #{temp_id};

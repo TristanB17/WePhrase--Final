@@ -1,10 +1,5 @@
   <script>
-    // let wut = '<%= @article.to_json %>'.replace(/&quot;/g, "\"")
-    // let mut ='<%= @article.to_json %>'.replace(/&quot;/g, '"')
-    // debugger;
     let javaArticle = JSON.parse('<%= @article.to_json %>'.replace(/&quot;/g, "\""))
-    // let javaArticle = JSON.parse('<%= @article.to_json %>'.replace(/&quot;/g, '"'))
-    // debugger;
     let languageId = '<%= @language.id %>'
     let baseUrl = '<%= ENV['BASE_URL'] %>'
     let keyWord = '<%= @keyword %>'
@@ -43,6 +38,7 @@
         url: baseUrl + "/languages/" + languageId + "/search",
         data: $(this).closest('form').serialize(),
         success: function(response) {
+          console.log(response)
           jQuery(`#${uniqueIdentfier}`).html(response);
         }
       });

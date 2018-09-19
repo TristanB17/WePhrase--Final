@@ -13,7 +13,7 @@ class Subsection
     if sentences.class == String
       ps = PragmaticSegmenter::Segmenter.new(text: sentences, language: target_language)
       ps.segment.map do |segment|
-        segment.delete('"').gsub("&", ",").delete('[1]').delete('[2]').delete('[3]').delete('[4]').delete('[5]').delete('[6]').delete('[7]').delete('[8]').delete('[9]')
+        segment.delete('"').gsub(Regexp.union(['[0]', '[1]', '[2]', '[3]', '[4]', '[5]', '[6]', '[7]', '[8]', '[9]']), '')
       end
     else sentences.class == Array
       sentences.map do |clear_out|
