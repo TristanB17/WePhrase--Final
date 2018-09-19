@@ -1,7 +1,19 @@
-Most Recent Translations for <%= @language.name %>
-<% @language.phrases.each do |phrase| %>
-  <%= phrase.body %><br>
-  <% phrase.translations.each do |translation| %>
-    <%= translation.output %><br><br>
+Recent Translations for <%= @language.name %><br><br>
+<% if @language.phrases.empty? == false %>
+  <% sorted = @language.phrases.sort_by { |phrase| phrase.created_at }.reverse %>
+  <% sorted.each do |phrase| %>
+    <%= phrase.body %>
+    <% phrase.translations.each do |translation| %>
+      <%= translation.output %><br><br>
+      Translated by: <%= translation.user.name %><br>
+      <span>
+      Rating: <%= translation.votes_for.size %><%= button_to like_translation_path({id: translation.id, url: request.env["REQUEST_PATH"]}), method: :put do %>
+        Upvote Translation
+      <% end %>
+      </span>
+    <% end %>
+    <br><br>
   <% end %>
+<% else %>
+  No translations for this language yet!
 <% end %>

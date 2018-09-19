@@ -1,8 +1,11 @@
+Get new phrases for <%= link_to @language.name, "/languages/#{@language.id}/search/new" %>
+
   <script>
     let javaArticle = JSON.parse('<%= @article.to_json %>'.replace(/&quot;/g, "\""))
     let languageId = '<%= @language.id %>'
     let baseUrl = '<%= ENV['BASE_URL'] %>'
     let keyWord = '<%= @keyword %>'
+    // let page = 0;
 
     const allTheCards = javaArticle.map((lang, index) => {
       return (
@@ -14,6 +17,10 @@
             ${lang.subheader}
           </section>
           <p class="to-translate">${lang.sentence}</p>
+          <div class='pg-btns'>
+          <button class='next'>Next</button>
+          <button class='prev'>Prev</button>
+          </div>
           <form>
             <input type="hidden" name="keyword" id="keyword" value="${keyWord}">
             <input type="hidden" name="subheader" id="subheader" value="${lang.subheader}">
@@ -29,6 +36,24 @@
       )
     })
     $('.middle-container').html(allTheCards);
+
+    // const handlePage = () => {
+    //   page++;
+    //   $('.middle-container').html(allTheCards[page]);
+    // }
+    //
+    // $('.middle-container').on('click', function(e) {
+    //   const { className } = e.target;
+    //
+    //   if(className === 'next') {
+    //     page++
+    //   } else if(className === 'prev') {
+    //     page--;
+    //   }
+    //   // if(page > array.length-1){ return }
+    //   console.log('boi')
+    //   $('.middle-container').html(allTheCards[page]);
+    // });
 
     $('.button').on('click', function (e) {
       e.preventDefault();

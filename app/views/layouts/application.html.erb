@@ -38,6 +38,11 @@
           <h4 class='navbar-text'>
             <%= button_to "Select New Language", new_language_path, method: :get %>
           </h4>
+          <h4 class='navbar-text'>
+            <% if @language != nil %>
+              <%= button_to "Get new phrases for #{@language.name}", "/languages/#{@language.id}/search/new", method: :get %>
+            <% end %>
+          </h4>
         </div>
       </div>
     </nav>

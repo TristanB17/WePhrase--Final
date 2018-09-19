@@ -1,11 +1,17 @@
-<%= link_to 'get some phrases', "/languages/#{@language.id}/search/new" %>
-<%= @language.name %><br><br>
+Recent Translations for <%= @language.name %><br><br>
 <% if @language.phrases.empty? == false %>
-  <% @language.phrases.each do |phrase| %>
+  <% sorted = language.phrases.sort_by { |phrase| - phrase.created_at } %>
+  <% sorted.each do |phrase| %>
     <%= phrase.body %>
     <% phrase.translations.each do |translation| %>
       <%= translation.output %><br><br>
+      Translated by: <%= translation.user.name %>
+      Rating: <%= translation.votes_for.size %>
+      <%= button_to like_translation_path({id: translation.id, url: request.env["REQUEST_PATH"]}), method: :put do %>
+        Upvote Translation
+      <% end %>
     <% end %>
+    <br><br>
   <% end %>
 <% else %>
   No translations for this language yet!

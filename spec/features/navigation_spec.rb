@@ -10,7 +10,11 @@ RSpec.describe 'a user' do
 
       visit '/'
 
-      
+      select(lang_1.name, from: :language)
+      click_button 'Recent Translations'
+
+      expect(current_path).to eq('/languages')
+      expect(page).to have_content("Most Recent Translations for #{lang_1.name}")
     end
   end
 end

@@ -4,10 +4,10 @@
   <% cool.reverse.each do |translation| %>
     Language: <%= translation.phrase.language.name %><br>
     Original Text:<br>
-    <%= translation.phrase.body %><br>
+    <%= translation.phrase.body %><br><br>
     Your Translation:<br>
     <%= translation.output %><br>
-    Approvals: <%= translation.votes_for.size %><br><br>
+    Upvotes: <%= translation.votes_for.size %><br><br>
     Other translations for this phrase:<br>
     Yandex <br>
     <%= translation.phrase.computer_translation.delete('[').delete(']').delete('"') %><br><br>
