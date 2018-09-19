@@ -2,7 +2,7 @@ Recent Translations for <%= @language.name %><br><br>
 <% if @language.phrases.empty? == false %>
   <% sorted = language.phrases.sort_by { |phrase| - phrase.created_at } %>
   <% sorted.each do |phrase| %>
-    <%= phrase.body %>
+    <%= phrase.body %><br><br>
     <% phrase.translations.each do |translation| %>
       <%= translation.output %><br><br>
       Translated by: <%= translation.user.name %>
