@@ -6,7 +6,7 @@ __Ruby Versions__
 
 ### The Main Focus of this Project
 
-This app was designed to provide a platform for language learning enthusiasts to both translate text in a target language as well as allow other users of the site to vote on the quality of a translation. A user will first pull text from an article of their choice in the desired language. Should the user submit a translation, both the sentence translated and the translation are stored in the database. The Yandex API will then return a translated version in the user's language (limited to English for now), as well as return any other users' translations of that sentence, enabling a user to compare their translation with other existing translations. 
+This app was designed to provide an initial platform (in its early stages) for language learning enthusiasts to both translate text in a target language as well as allow other users of the site to vote on the quality of a translation. A user will first pull text from an article of their choice in the desired language. Should the user submit a translation, both the sentence translated and the translation are stored in the database. The Yandex API will then return a translated version in the user's language (limited to English for now), as well as return any other users' translations of that sentence, enabling a user to compare their translation with other existing translations. 
 
 
 ## Technologies Utilized
