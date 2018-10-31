@@ -11,7 +11,21 @@ This app was designed to provide an initial platform (in its early stages) for l
 
 ## Technologies Utilized
 
-The app itself is a minimalistically styled Ruby on Rails app, with some node.js components (and the jQuery library) included to enable a more responsive front-end. The apis used include the wikipedia api, and the yandex translator api. The google translate api was originally planned to be incorperated into the app, but due to budgetary constraints, it was not possible. The App is tested using RSpec mainly with Capybara and Selenium Webdriver. AJAX is also used to alter the contents of a page without having to reload the window. 
+The app itself is a minimalistically styled Ruby on Rails app, with some node.js components (and the jQuery library) included to enable a more responsive front-end. 
+
+![Settings Window](https://i.imgur.com/rnOTs0S.png)
+
+The apis used include the wikipedia api, and the yandex translator api. The google translate api was originally planned to be incorperated into the app, but due to budgetary constraints, it was not possible. Due to the nature of the wikipedia api, some finessing had to be done server side to retrieve the correct text. 
+
+![Settings Window](https://i.imgur.com/OvbA7Xo.png)
+
+The App is tested using RSpec mainly with Capybara and Selenium Webdriver.
+
+![Settings Window](https://i.imgur.com/8PRGriH.png)
+
+AJAX is also used to alter the contents of a page without having to reload the window: 
+
+![Settings Window](https://i.imgur.com/tndiF95.png)
 
 ## Initial Setup
 
