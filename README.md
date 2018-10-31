@@ -29,7 +29,18 @@ The app itself is a minimalistically styled Ruby on Rails app, with some node.js
   bundle update
   npm install
   ```
+  
+## Running the Server Locally
 
+To run the code locally, use the command:
+
+```shell
+rails s
+```
+
+Once the server is running, enter this address:
+
+* `http://localhost:3000/` into a browser to run your application.
 
 ## Deployment
 
