@@ -20,11 +20,11 @@ Should the user submit a translation, both the sentence translated and the trans
 
 ## Technologies Utilized
 
-The app itself is a minimalistically styled Ruby on Rails app, with some node.js components (and the jQuery library) included to enable a more responsive front-end. 
+The app itself is a minimalistically styled Ruby on Rails app, with some node.js components (and the jQuery library) included to enable a more responsive front-end. All translation cards are created with JavaScript to enable them to have unique ids and be referenced as such. In addition, the JavaScript creation method allowed for easier rendering of additions to a translation with the help of AJAX code (pictured at bottom). 
 
 ![Settings Window](https://i.imgur.com/rnOTs0S.png)
 
-The apis used include the wikipedia api, and the yandex translator api. The google translate api was originally planned to be incorperated into the app, but due to budgetary constraints, it was not possible. Because of the nature of the wikipedia api, some finessing had to be done server side to retrieve the correct text. 
+The APIs used include the wikipedia API, and the yandex translator API. The google translate API was originally planned to be incorperated into the app, but due to budgetary constraints, it was not possible. Because of the nature of the wikipedia API, some finessing had to be done server side to retrieve the correct text, especially when filtering out unneeded HTML tags. 
 
 ![Settings Window](https://i.imgur.com/OvbA7Xo.png)
 
