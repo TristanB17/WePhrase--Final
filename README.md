@@ -6,8 +6,17 @@ __Ruby Versions__
 
 ### The Main Focus of this Project
 
-This app was designed to provide an initial platform (in its early stages) for language learning enthusiasts to both translate text in a target language as well as allow other users of the site to vote on the quality of a translation. A user will first pull text from an article of their choice in the desired language. Should the user submit a translation, both the sentence translated and the translation are stored in the database. The Yandex API will then return a translated version in the user's language (limited to English for now), as well as return any other users' translations of that sentence, enabling a user to compare their translation with other existing translations. 
+This app was designed to provide an initial platform (in its early stages) for language learning enthusiasts to both translate text in a target language as well as allow other users of the site to vote on the quality of a translation. A user will first search a term of their choice/in their area of interest in the desired language 
 
+![Settings Window](https://i.imgur.com/ketTxhj.png)
+
+Provided the article in that area exists in the target language, WePhrase parses the text into sections of the article on the searched item, then seperates those sections into individual sentences. 
+
+![Settings Window](https://i.imgur.com/SFqKduL.png)
+
+Should the user submit a translation, both the sentence translated and the translation are stored in the database. The Yandex API will then return a translated version in the user's language (limited to English for now), as well as return any other users' translations of that sentence, enabling a user to compare their translation with other existing translations. 
+
+![Settings Window](https://i.imgur.com/91MSs0M.png)
 
 ## Technologies Utilized
 
@@ -26,6 +35,7 @@ The App is tested using RSpec mainly with Capybara and Selenium Webdriver.
 AJAX is also used to alter the contents of a page without having to reload the window: 
 
 ![Settings Window](https://i.imgur.com/tndiF95.png)
+
 
 ## Initial Setup
 
