@@ -20,13 +20,11 @@ Should the user submit a translation, both the sentence translated and the trans
 
 ## Technologies Utilized
 
-The app itself is a minimalistically styled Ruby on Rails app, with some node.js components (and the jQuery library) included to enable a more responsive front-end. All translation cards are created with JavaScript to enable them to have unique ids and be referenced as such. In addition, the JavaScript creation method allowed for easier rendering of additions to a translation with the help of AJAX. 
+The app itself is a minimalistically styled Ruby on Rails app, with some node.js components (and the jQuery library) included to enable a more responsive front-end. All translation cards are rendered with JavaScript and created in a Postgres database to enable them to have unique ids and be referenced as such. In addition, the use of JavaScript in the frontend allowed for easier rendering of additions to a translation with the help of AJAX (Asynchronous JavaScript and XML). 
 
 The APIs used include the wikipedia API, and the yandex translator API. The google translate API was originally planned to be incorperated into the app, but due to budgetary constraints, it was not possible. Because of the nature of the wikipedia API, some finessing had to be done server side to retrieve the correct text, especially when filtering out unneeded HTML tags. 
 
-The App is tested using RSpec mainly with Capybara and Selenium Webdriver.
-
-AJAX is also used to alter the contents of a page without having to reload the window: 
+The App is tested using mainly RSpec with Capybara.
 
 ## Initial Setup
 
