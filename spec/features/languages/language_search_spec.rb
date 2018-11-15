@@ -2,14 +2,15 @@ require 'rails_helper'
 
 describe 'a User' do
   context 'visiting a languages homepage' do
-    it 'gets to a language search page' do
+    it 'gets to a language search page', :js do
       user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       lang_1 = create(:language)
       lang_2 = create(:language_2)
 
       visit '/languages/2'
-      expect(page).to have_link('get some phrases')
-      click_link 'get some phrases'
+      expect(page).to have_content("Recent Translations for #{lang_2.name}")
+      click_button "Get new phrases for #{lang_2.name}"
 
       expect(current_path).to eq("/languages/#{lang_2.id}/search/new")
       expect(page).to have_content("Search for phrases in an area of interest:")

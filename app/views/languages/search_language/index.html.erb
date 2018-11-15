@@ -5,7 +5,6 @@ Get new phrases for <%= link_to @language.name, "/languages/#{@language.id}/sear
     let languageId = '<%= @language.id %>'
     let baseUrl = '<%= ENV['BASE_URL'] %>'
     let keyWord = '<%= @keyword %>'
-    // let page = 0;
 
     const allTheCards = javaArticle.map((lang, index) => {
       return (

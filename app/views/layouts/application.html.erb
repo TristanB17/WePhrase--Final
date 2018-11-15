@@ -24,7 +24,7 @@
           <%= form_tag :languages, method: :get, class: "form-inline" do %>
             <div class="form-group search-field">
               <%= select_tag :language, options_for_select(language_select) %>
-              <%= submit_tag "Recent Translations", method: :get, class: "btn btn-primary" %>
+              <%= submit_tag "Get Recent Translations", method: :get, class: "btn btn-primary" %>
             </div>
           <% end %>
         </ul>

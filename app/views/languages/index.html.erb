@@ -1,4 +1,4 @@
-Recent Translations for <%= @language.name %><br><br>
+Most Recent Translations for <%= @language.name %><br><br>
 <% if @language.phrases.empty? == false %>
   <% sorted = @language.phrases.sort_by { |phrase| phrase.created_at }.reverse %>
   <% sorted.each do |phrase| %>
