@@ -33,7 +33,7 @@ describe 'a User' do
       end
 
       expect(current_path).to eq("/languages/#{lang_2.id}/search")
-      within(first '.article') do
+      within first('.translate-card') do
         expect(page).to have_text('Die Spinne')
       end
     end
