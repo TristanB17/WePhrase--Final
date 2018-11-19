@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'a user' do
+  before(:each) do
+    Capybara.current_driver = :selenium
+  end
   context 'when logged in' do
     it 'can select a new language (covered by wikipedia & yandex)' do
       user = create(:user)
