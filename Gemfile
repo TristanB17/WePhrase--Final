@@ -32,6 +32,7 @@ gem 'jquery-rails'
 gem 'addressable'
 gem 'pragmatic_segmenter'
 gem 'acts_as_votable', '~> 0.11.1'
+gem 'geckodriver-helper'
 # client secret - nGOdr6I_h7GQP4igjabHK6SF
 # client ID - 883150170868-p6ssa09bp9u07ecrskffpd6uqc266th0.apps.googleusercontent.com
 # AIzaSyAj56SLNfVOPfJ1aenLFr0LUiW9a8xtMgw
@@ -49,6 +50,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
+  gem 'chromedriver-helper'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'launchy'
