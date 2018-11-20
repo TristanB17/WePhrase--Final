@@ -1,8 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature 'user logs in' do
-  context 'using oauth2', js: false do
+  context 'using oauth2' do
     it 'is able to log in with correct credentials' do
+      stub_omniauth
+
+      binding.pry
+
       greeting = 'Sign in with Google'
       provider = 'google'
       first_name = 'Vincent'
@@ -10,8 +14,6 @@ RSpec.feature 'user logs in' do
       uid = '12345678910'
       token = '12345'
       logout = 'Sign Out'
-
-      stub_omniauth
 
       visit root_path
       expect(page).to have_content(greeting)

@@ -114,14 +114,14 @@ RSpec.configure do |config|
       provider: "google",
       uid: "12345678910",
       info: {
-        email: "vinnie@spaghett.com",
+        email: "vinnie@price.com",
         first_name: "Vincent",
         last_name: "Price"
       },
       credentials: {
         token: "12345",
         refresh_token: "123456",
-        expires_at: DateTime.now,
+        expires_at: DateTime.now
       }
     })
   end

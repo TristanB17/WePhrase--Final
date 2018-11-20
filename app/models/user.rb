@@ -8,7 +8,6 @@ class User < ApplicationRecord
   acts_as_voter
 
   def self.from_omniauth(auth)
-    binding.pry
     create! do |user|
       user.provider = auth.provider
       user.uid = auth.uid
