@@ -19,7 +19,7 @@ describe 'a User' do
     end
   end
   context 'visiting a language search page' do
-    it 'enters a search word and sees phrases generated in that language for that word' do
+    it 'enters a search word and sees phrases generated in that language for that word', driver: :chrome do
       user = create(:user)
       lang_1 = create(:language)
       lang_2 = create(:language_2)
@@ -53,7 +53,7 @@ describe 'a User' do
       expect(current_path).to eq("/languages/#{lang_2.id}/search/new")
       expect(page).to have_content("We're sorry! We couldn't find any results for that query;")
     end
-    it 'translates a mandarin phrase on heroku via encoding' do
+    it 'translates a mandarin phrase on heroku via encoding', driver: :chrome do
       user = create(:user)
       lang_1 = create(:language)
       lang_2 = create(:language_2)
