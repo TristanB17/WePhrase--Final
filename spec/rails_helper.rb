@@ -49,6 +49,20 @@ Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
 
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
+Capybara.register_driver :headless_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: { args: %w(headless disable-gpu) }
+  )
+
+  Capybara::Selenium::Driver.new app,
+    browser: :chrome,
+    desired_capabilities: capabilities
+end
+
 Capybara.javascript_driver = :selenium_chrome
 
 Capybara.configure do |config|
@@ -110,17 +124,14 @@ RSpec.configure do |config|
 
   def stub_omniauth
     OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new({
+    OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
       provider: "google",
       uid: "12345678910",
       info: {
-        email: "vinnie@price.com",
-        first_name: "Vincent",
-        last_name: "Price"
+        first_name: "Vincent"
       },
       credentials: {
         token: "12345",
-        refresh_token: "123456",
         expires_at: DateTime.now
       }
     })
