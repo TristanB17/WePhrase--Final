@@ -32,24 +32,6 @@ Get new phrases for <%= link_to @language.name, "/languages/#{@language.id}/sear
     })
     $('.middle-container').html(allTheCards);
 
-    // const handlePage = () => {
-    //   page++;
-    //   $('.middle-container').html(allTheCards[page]);
-    // }
-    //
-    // $('.middle-container').on('click', function(e) {
-    //   const { className } = e.target;
-    //
-    //   if(className === 'next') {
-    //     page++
-    //   } else if(className === 'prev') {
-    //     page--;
-    //   }
-    //   // if(page > array.length-1){ return }
-    //   console.log('boi')
-    //   $('.middle-container').html(allTheCards[page]);
-    // });
-
     $('.button').on('click', function (e) {
       e.preventDefault();
       let uniqueIdentfier = $(this).closest('form').find('.successful-translation').attr('id');
@@ -58,7 +40,6 @@ Get new phrases for <%= link_to @language.name, "/languages/#{@language.id}/sear
         url: baseUrl + "/languages/" + languageId + "/search",
         data: $(this).closest('form').serialize(),
         success: function(response) {
-          console.log(response)
           jQuery(`#${uniqueIdentfier}`).html(response);
         }
       });
