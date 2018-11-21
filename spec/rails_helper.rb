@@ -14,10 +14,10 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require 'vcr'
 VCR.configure do |c|
-  c.cassette_library_dir = 'spec/vcr'
+  c.cassette_library_dir = 'spec/vcr/fixtures'
   c.ignore_localhost = true
   c.hook_into :webmock
-  c.configure_rspec_metadata!
+  # c.configure_rspec_metadata!
 end
 # Add additional requires below this line. Rails is not loaded until this point!
 
