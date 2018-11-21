@@ -8,6 +8,7 @@ describe 'a User' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       lang_1 = create(:language)
       search_word = 'lightning'
+      yandex = 'Yandex translates this as'
 
       visit '/languages/1'
       expect(page).to have_content("Recent Translations for #{lang_1.name}")
@@ -20,11 +21,14 @@ describe 'a User' do
 
       expect(current_path).to eq("/languages/#{lang_1.id}/search")
       within first('.translate-card') do
-        fill_in '.translate', with: 'Lightning is a meteorological phenomenon'
+        fill_in "user_translation", with: 'Lightning is a meteorological phenomenon'
         click_button 'Submit Translation'
       end
-
-
+      
+      within first('.translate-card') do
+        expect(page).to have_text(search_word)
+        expect(page).to have_text(yandex)
+      end
     end
   end
 end

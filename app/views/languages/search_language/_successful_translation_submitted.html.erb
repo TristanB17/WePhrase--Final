@@ -1,4 +1,4 @@
-Yandex Translator translates this sentence as:<br>
+Yandex Translator translates this as:<br>
 <%= JSON.parse(@phrase.computer_translation).first %><br><br>
 <% if @phrase.translations.where.not(user_id: current_user.id).empty? %>
   You submitted the first translation for this phrase! Congratulations!
