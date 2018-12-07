@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'a User' do
   context 'translating a phrase' do
-    it 'can submit a translation and view existing translations for that phrase', driver: :chrome, js: true do
+    it 'can submit a translation and view existing translations for that phrase', driver: :headless_chrome, js: true do
       Capybara.current_session.current_window.resize_to(1000, 1000)
       # VCR.use_cassette('user_search_mandarin_lightning', :record => :new_episodes) do
       user = create(:user)
@@ -28,15 +28,16 @@ describe 'a User' do
         click_button 'Submit Translation'
       end
 
-      sleep(30)
+      page.driver.browser.navigate.refresh
+      save_and_open_page
 
       within first('.translate-card') do
-        expect(page).to have_text(search_word)
-        expect(page).to have_text(first_text)
-        expect(page).to have_text(yandex)
-        expect(page).to have_text(first_translation)
+        click_button 'Submit Translation'
+        expect(page).to have_text('Stop that you pleb.')
+        # expect(page).to have_text(first_text)
+        # expect(page).to have_text(yandex)
+        # expect(page).to have_text(first_translation)
       end
-      # end
     end
   end
 end
