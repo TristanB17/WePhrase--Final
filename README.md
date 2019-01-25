@@ -10,6 +10,8 @@ This app was designed to provide an initial platform for language learning enthu
 
 ![Settings Window](https://i.imgur.com/ketTxhj.png)
 
+Provided the article exists in the target language, WePhrase parses the text into sections of the article on the searched item, then separates those sections into individual sentences.
+
 ![Settings Window](https://i.imgur.com/SFqKduL.png)
 
 Should the user submit a translation, both the sentence translated and the translation are stored in the database. The Yandex API will then return a translated version in the user's language (limited to English for now), as well as return any other users' translations of that sentence, enabling a user to compare their translation with other existing translations. 
